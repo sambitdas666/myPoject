@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java-Script Project</title>
+</head>
+<style>
+    #box {
+        height: 400px;
+        width: 400px;
+        background-color: darkmagenta;
+        position: relative;
+    }
+</style>
+
+<body>
+    <div>
+        <h1> Java-Script Project </h1>
+        <p> Please tap on the box to start the game ....</p>
+    </div>
+    <div id="box"></div>
+</body>
+<script>
+    var date = new Date().getTime();
+    function randomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+    function startGame() {
+        var left;
+        var top;
+        var wh;
+        left = Math.floor(Math.random() * 300) + "px";
+        top = Math.floor(Math.random() * 300) + "px";
+        wh = (Math.floor(Math.random() * 400) + 100) + "px";
+        document.getElementById("box").style.left = left;
+        document.getElementById("box").style.top = top;
+        document.getElementById("box").style.width = wh;
+        document.getElementById("box").style.height = wh;
+        document.getElementById("box").style.display = "block";
+        document.getElementById("box").style.backgroundColor = randomColor();
+        date = new Date().getTime();
+    }
+
+    document.getElementById("box").onclick = function () {
+        document.getElementById("box").style.display = "none";
+        var end = new Date().getTime();
+        var time = (end - date) / 1000;
+        alert("Your time is " + time + " seconds");
+        startGame();
+    }
+    startGame();
+
+</script>
+
+</html>
